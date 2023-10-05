@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'inspirelogix-root',
+  selector: 'admin-root',
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'admin-eshop';
+  title = 'Admin-Eshop';
 }
