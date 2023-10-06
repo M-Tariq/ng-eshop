@@ -1,0 +1,50 @@
+<div class="admin-page">
+    <p-card [header]="isEditMode? 'Edit Category' : 'Add Category'"
+        subheader="You can add or edit categories here..."></p-card>
+
+    <div class="p-grid">
+        <p-toolbar>
+            <div class="p-toolbar-group-left"></div>
+            <div class="p-toolbar-group-right">
+                <p-button (click)="onSubmit()" styleClass="p-button-primary" [label]="isEditMode? 'Update' : 'Create'"
+                    icon="pi pi-plus" class="mr-2"></p-button>
+                <p-button (click)="navigateToCategoryListing()" styleClass="p-button-secondary" label="Cancel"
+                    icon="pi pi-arrow-circle-left" class="mr-2"></p-button>
+            </div>
+        </p-toolbar>
+
+        <div class="form" [formGroup]="form">
+            <div class="card">
+                <div class="formgrid grid">
+
+                    <div class="field col">
+                        <label for="name">Name</label>
+                        <input formControlName="name" id="name" type="text" class="ng-invalid ng-dirty"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="categoryForm['name']?.touched && categoryForm['name']?.invalid"
+                            class="p-error block" id="name">
+                            Category Name is required
+                        </small>
+                    </div>
+                    <div class="field col">
+                        <label for="icon">Icon</label>
+                        <input formControlName="icon" id="icon" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="categoryForm['icon']?.touched && categoryForm['icon']?.invalid" class="p-error"
+                            id="name">
+                            Category Icon is required
+                        </small>
+                    </div>
+
+                    <div class="field col">
+                        <label for="icon">Color</label>
+                        <br>
+                        <p-colorPicker formControlName="color"></p-colorPicker>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
