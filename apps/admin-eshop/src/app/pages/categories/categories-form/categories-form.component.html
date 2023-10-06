@@ -16,6 +16,7 @@
         <div class="form" [formGroup]="form">
             <div class="card">
                 <div class="formgrid grid">
+
                     <div class="field col">
                         <label for="name">Name</label>
                         <input formControlName="name" id="name" type="text" class="ng-invalid ng-dirty"
@@ -33,8 +34,14 @@
                             id="name">
                             Category Icon is required
                         </small>
-
                     </div>
+
+                    <div class="field col">
+                        <label for="icon">Color</label>
+                        <br>
+                        <p-colorPicker formControlName="color"></p-colorPicker>
+                    </div>
+
                 </div>
             </div>
         </div>

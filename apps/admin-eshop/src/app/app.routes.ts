@@ -3,6 +3,8 @@ import { ShellComponent } from './shared/shell/shell.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductFormComponent } from './pages/products/product-form/product-form.component';
 
 export const appRoutes: Route[] = [
     {
@@ -11,11 +13,6 @@ export const appRoutes: Route[] = [
         children: [
             {
                 path: 'dashboard',
-                component: DashboardComponent
-            },
-
-            {
-                path: 'products',
                 component: DashboardComponent
             },
 
@@ -32,6 +29,21 @@ export const appRoutes: Route[] = [
             {
                 path: 'categories/form/:id',
                 component: CategoriesFormComponent
+            },
+
+            {
+                path: 'products',
+                component: ProductsListComponent
+            },
+
+            {
+                path: 'products/form',
+                component: ProductFormComponent
+            },
+
+            {
+                path: 'products/form/:id',
+                component: ProductFormComponent
             },
 
 

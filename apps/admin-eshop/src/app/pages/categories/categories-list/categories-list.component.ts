@@ -27,9 +27,9 @@ export class CategoriesListComponent {
     this.router.navigate(['categories/form']);
   }
 
-  onDeleteCategory(id: String) {
+  onDeleteCategory(id: String, name: string) {
     this.confirmationService.confirm({
-      message: 'Do you want to delete this Category?',
+      message: `Do you want to delete ${name} Category?`,
       header: 'Delete Category',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {

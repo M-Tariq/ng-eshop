@@ -18,7 +18,8 @@
       "@inspirelogix/orders": ["libs/orders/src/index.ts"],
       "@inspirelogix/products": ["libs/products/src/index.ts"],
       "@inspirelogix/ui": ["libs/ui/src/index.ts"],
-      "@inspirelogix/users": ["libs/users/src/index.ts"]
+      "@inspirelogix/users": ["libs/users/src/index.ts"],
+      "@env/*": ["environments/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]

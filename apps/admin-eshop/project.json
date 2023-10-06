@@ -10,6 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "allowedCommonJsDependencies": ["quill"],
         "outputPath": "dist/apps/admin-eshop",
         "index": "apps/admin-eshop/src/index.html",
         "main": "apps/admin-eshop/src/main.ts",
@@ -19,8 +20,12 @@
           "apps/admin-eshop/src/favicon.ico",
           "apps/admin-eshop/src/assets"
         ],
-        "styles": ["apps/admin-eshop/src/styles.sass"],
-        "scripts": []
+        "styles": [
+          "apps/admin-eshop/src/styles.sass",
+          "node_modules/quill/dist/quill.core.css",
+          "node_modules/quill/dist/quill.snow.css"
+        ],
+        "scripts": ["node_modules/quill/dist/quill.js"]
       },
       "configurations": {
         "production": {

@@ -22,9 +22,19 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
-const UX_MODULES = [CardModule, ToolbarModule, ButtonModule, TableModule, ToastModule, MessagesModule, ConfirmDialogModule];
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductFormComponent } from './pages/products/product-form/product-form.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { EditorModule } from 'primeng/editor';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
+
+const UX_MODULES = [CardModule, InputTextareaModule, InputNumberModule, EditorModule, InputSwitchModule, ColorPickerModule, DropdownModule, ToolbarModule, ButtonModule, TableModule, ToastModule, MessagesModule, ConfirmDialogModule];
 @NgModule({
-  declarations: [AppComponent, ShellComponent, DashboardComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent],
+  declarations: [AppComponent, ShellComponent, DashboardComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

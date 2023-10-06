@@ -29,6 +29,7 @@ export class CategoriesFormComponent {
       {
         name: ["", Validators.required],
         icon: ["", Validators.required],
+        color: ["#fff"],
       }
     );
   }
@@ -43,7 +44,9 @@ export class CategoriesFormComponent {
     const category = {
       name: this.categoryForm['name'].value,
       icon: this.categoryForm['icon'].value,
+      color: this.categoryForm['color'].value,
     };
+
     if (this.isEditMode) {
       this._updateCategory(category);
 
@@ -100,6 +103,7 @@ export class CategoriesFormComponent {
         next: (category) => {
           this.categoryForm['name'].setValue(category?.name);
           this.categoryForm['icon'].setValue(category?.icon);
+          this.categoryForm['color'].setValue(category?.color);
         },
         error: (error) => {
           // Handle the error
