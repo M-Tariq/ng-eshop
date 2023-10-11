@@ -39,6 +39,7 @@ export class ProductFormComponent {
         brand: ["", Validators.required],
         description: ["", Validators.required],
         richDescription: ["", Validators.required],
+        image: ["", Validators.required],
         category: ["", Validators.required],
         price: ["", Validators.required],
         countInStock: [0, Validators.required],
@@ -69,17 +70,26 @@ export class ProductFormComponent {
       price: this.productForm['price'].value,
       countInStock: this.productForm['countInStock'].value,
       isFeatured: this.productForm['isFeatured'].value,
+      ...(this.productForm['image'].value && { image: this.productForm['image'].value })
     };
 
+
+    let formData = new FormData();
+    Object.entries(this.productForm).forEach(([key, value]) => {
+      if (value.value) {
+        formData.append(key, value.value);
+      }
+    });
+
     if (this.isEditMode) {
-      this._updateProduct(product);
+      this._updateProduct(formData);
 
     } else {
-      this._addProduct(product);
+      this._addProduct(formData);
     }
   }
 
-  private _addProduct(product: Product) {
+  private _addProduct(product: FormData) {
     this.productsService.addProduct(product).subscribe((res) => {
       if (res?.success) {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Category Added Successfully' });
@@ -90,11 +100,11 @@ export class ProductFormComponent {
       }
     },
       error => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message ?? "Something went Wrong!" });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message ?? "Something went Wrong!" });
       });
   }
 
-  private _updateProduct(product: Product) {
+  private _updateProduct(product: FormData) {
     this.productsService.updateProduct(product, this.id).subscribe((res) => {
       if (res?.success) {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Category Updated Successfully' });
@@ -105,7 +115,7 @@ export class ProductFormComponent {
       }
     },
       error => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message ?? "Something went Wrong!" });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message ?? "Something went Wrong!" });
       });
   }
 
@@ -127,7 +137,6 @@ export class ProductFormComponent {
 
       this.productsService.getProduct(this.id).subscribe({
         next: (product) => {
-          console.log(product);
           this.productForm['name'].setValue(product?.name);
           this.productForm['brand'].setValue(product?.brand);
           this.productForm['description'].setValue(product?.description);
@@ -136,6 +145,11 @@ export class ProductFormComponent {
           this.productForm['price'].setValue(product?.price);
           this.productForm['isFeatured'].setValue(product?.isFeatured);
           this.productForm['category'].setValue(product?.category);
+          this.productForm['image'].setValidators([]);
+          //after dynamic validation changes we need to update value and validity
+          this.productForm['image'].updateValueAndValidity();
+
+          this.imageDisplay = product?.image || '';
         },
         error: (error) => {
           // Handle the errora
@@ -152,6 +166,8 @@ export class ProductFormComponent {
   onImageUpload(event: any) {
     const file = event.target.files[0];
     if (file) {
+      this.form.patchValue({ image: file });
+      this.form.get("image")?.updateValueAndValidity();
       const fileReader = new FileReader();
       fileReader.onload = () => {
         this.imageDisplay = fileReader.result || "";

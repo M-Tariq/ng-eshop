@@ -30,11 +30,13 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { EditorModule } from 'primeng/editor';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-
-
-const UX_MODULES = [CardModule, InputTextareaModule, InputNumberModule, EditorModule, InputSwitchModule, ColorPickerModule, DropdownModule, ToolbarModule, ButtonModule, TableModule, ToastModule, MessagesModule, ConfirmDialogModule];
+import { ImageModule } from 'primeng/image';
+import { PaginatorModule } from 'primeng/paginator';
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+const UX_MODULES = [CardModule, PaginatorModule, ImageModule, InputTextareaModule, InputNumberModule, EditorModule, InputSwitchModule, ColorPickerModule, DropdownModule, ToolbarModule, ButtonModule, TableModule, ToastModule, MessagesModule, ConfirmDialogModule];
 @NgModule({
-  declarations: [AppComponent, ShellComponent, DashboardComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductFormComponent],
+  declarations: [AppComponent, ShellComponent, DashboardComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductFormComponent, UserFormComponent, UsersListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

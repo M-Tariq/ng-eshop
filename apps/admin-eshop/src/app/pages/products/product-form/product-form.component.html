@@ -13,7 +13,7 @@
             </div>
         </p-toolbar>
 
-        <div class="form" [formGroup]="form" id="form">
+        <form class="form" [formGroup]="form" id="form">
             <div class="card">
                 <div class="formgrid grid">
                     <div class="field col">
@@ -118,11 +118,15 @@
                 <div class="p-field p-col-12">
                     <label for="description">Product Main Image</label>
                     <br>
-                    <input (change)="onImageUpload($event)" type="file" accept="image/*" class="p-inputtext"
-                        style="width: 100%;" />
-                    <img [src]="imageDisplay" alt="">
+                    <input (change)="onImageUpload($event)" type="file" accept="image/*" class="p-inputtext" />
+                    <small *ngIf="productForm['image']?.touched && productForm['image']?.invalid" class="p-error"
+                        id="description">
+                        Product Image is required
+                    </small>
+                    <div class="p-col-2 p-mt-5">
+                        <img style="width: 100%;" [src]="imageDisplay" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
-
+        </form>
     </div>

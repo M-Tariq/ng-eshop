@@ -8,4 +8,5 @@ export class Product {
     category?: String;
     countInStock?: Number;
     isFeatured?: Boolean;
+    image?: string;
 }
