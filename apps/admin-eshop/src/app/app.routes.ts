@@ -58,8 +58,14 @@ export const appRoutes: Route[] = [
                 path: 'users',
                 component: UsersListComponent
             },
+
             {
-                path: 'users/:id',
+                path: 'users/form',
+                component: UserFormComponent
+            },
+
+            {
+                path: 'users/form/:id',
                 component: UserFormComponent
             },
 

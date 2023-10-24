@@ -15,6 +15,8 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesService } from '@inspirelogix/products';
+import { UserService } from '@inspirelogix/users';
+
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
@@ -47,7 +49,7 @@ const UX_MODULES = [CardModule, PaginatorModule, ImageModule, InputTextareaModul
     UiModule,
     ...UX_MODULES
   ],
-  providers: [CategoriesService, MessageService, ConfirmationService],
+  providers: [CategoriesService, MessageService, ConfirmationService, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
